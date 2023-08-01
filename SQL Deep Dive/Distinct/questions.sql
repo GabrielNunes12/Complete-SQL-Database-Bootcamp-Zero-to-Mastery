@@ -5,7 +5,7 @@
 */
 
 SELECT * FROM titles;
-
+select distinct(t.title) from public.titles t
 
 /*
 * DB: Employees
@@ -14,7 +14,8 @@ SELECT * FROM titles;
 */
 
 SELECT * FROM employees;
-
+select count(distinct(e.birth_date)) from public.employees e 
+  
 /*
 * DB: World
 * Table: country
@@ -23,4 +24,4 @@ SELECT * FROM employees;
 */
 
 SELECT * FROM country;
-
+select distinct(coalesce(c.lifeexpectancy, 0)) from public.country c 
