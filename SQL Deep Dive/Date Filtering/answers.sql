@@ -48,3 +48,14 @@ SELECT MAX(AGE(birth_date)) FROM employees;
 SELECT COUNT(orderid)
 FROM orders
 WHERE DATE_TRUNC('month', orderdate) = date '2004-01-01';
+
+SELECT count(o.orderid) FROM orders o where extract(year from o.orderdate) = 2004 and extract(month from o.orderdate) = 01;
+
+select count(e.first_name) from employees e where extract(year from age(e.birth_date)) > 60;
+
+--Who was hired in february?
+select count(e.first_name) from employees e where extract(month from e.hire_date) = 2;
+
+-- Who is the oldest employee? (Use the analytical function MAX)
+select MAX(AGE(e.birth_date)) as fName from employees e;
+
