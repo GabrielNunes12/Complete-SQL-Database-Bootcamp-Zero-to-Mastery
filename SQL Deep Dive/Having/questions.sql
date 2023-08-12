@@ -4,6 +4,12 @@
 *  Database: Employees
 */
 
+select CONCAT(e.first_name, ' ',  e.last_name) as "fullName", count(t.title) as "# titles"
+from employees e 
+join titles t on e.emp_no = t.emp_no
+where extract (year from e.hire_date) > 1991
+group by e.emp_no
+having count(t.title) > 2
 
 
 /*
